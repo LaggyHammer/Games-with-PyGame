@@ -118,7 +118,6 @@ def split_into_groups_of(group_size, input_list):
 
 
 def get_shape_color(board, box_x, box_y):
-
     return board[box_x][box_y][0], board[box_x][box_y][1]
 
 
@@ -147,9 +146,11 @@ def draw_box_covers(board, boxes, coverage):
         pygame.display.update()
         fps_clock.tick(fps)
 
+
 def reveal_animation(board, boxes_to_reveal):
     for coverage in range(box_size, (-reveal_speed) - 1, - reveal_speed):
         draw_box_covers(board, boxes_to_reveal, coverage)
+
 
 def cover_animation(board, boxes_to_cover):
     for coverage in range(0, box_size + reveal_speed, reveal_speed):
@@ -157,12 +158,11 @@ def cover_animation(board, boxes_to_cover):
 
 
 def start_game_animation(board):
-
     covered_boxes = generate_revealed_data(False)
     boxes = []
     for x in range(board_width):
         for y in range(board_height):
-            boxes.append((x,y))
+            boxes.append((x, y))
 
     random.shuffle(boxes)
     box_groups = split_into_groups_of(8, boxes)
@@ -202,7 +202,6 @@ def game_won_animation(board):
 
 
 def game_won(revealed_boxes):
-
     for i in revealed_boxes:
         if False in i:
             return False
@@ -230,7 +229,7 @@ def main():
     display_surf.fill(bg_color)
     start_game_animation(main_board)
 
-    while True: # main game loop
+    while True:  # main game loop
         mouse_clicked = False
 
         display_surf.fill(bg_color)
@@ -293,7 +292,4 @@ def main():
 
 
 if __name__ == '__main__':
-
     main()
-
-
